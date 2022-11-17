@@ -1,0 +1,14 @@
+{
+  "name": "aws-clamav-layer",
+  "description": "",
+  "version": "0.1.1",
+  "dependencies": {},
+  "devDependencies": {
+    "aws-sdk": "^2.964.0",
+    "jest": "^27.0.6"
+  },
+  "scripts": {
+    "build": "./build.sh", 
+    "test": "jest handler.test.js"
+  }
+}
