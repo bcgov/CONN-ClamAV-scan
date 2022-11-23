@@ -73,7 +73,21 @@ RUN mkdir -p opt/var/lib/clamav
 RUN chmod -R 777 opt/var/lib/clamav
 
 RUN LD_LIBRARY_PATH=./lib ./bin/freshclam --config-file=bin/freshclam.conf
-RUN cp opt/var/lib/clamav/* var/lib/clamav/.
+# RUN cp opt/var/lib/clamav/* var/lib/clamav/.
+
+COPY ./extralib/libcurl.so.4 lib/.
+COPY ./extralib/libcrypt.so.1 lib/.
+COPY ./extralib/libidn2.so.0 lib/.
+COPY ./extralib/liblber-2.4.so.2 lib/.
+COPY ./extralib/libldap-2.4.so.2 lib/.
+COPY ./extralib/libnghttp2.so.14 lib/.
+COPY ./extralib/libnss3.so lib/.
+COPY ./extralib/libnssutil3.so lib/.
+COPY ./extralib/libsasl2.so.3 lib/.
+COPY ./extralib/libsmime3.so lib/.
+COPY ./extralib/libssh2.so.1 lib/.
+COPY ./extralib/libssl3.so lib/.
+COPY ./extralib/libunistring.so.0 lib/.
 
 RUN zip -r9 clamav_lambda_layer.zip bin
 RUN zip -r9 clamav_lambda_layer.zip lib
