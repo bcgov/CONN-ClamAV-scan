@@ -12,4 +12,4 @@ git clone https://github.com/bcgov/CONN-ClamAV-scan
 ```
 
 After successfult `build.sh` execution,  archive `clamav_lambda_layer.zip` would be generated in the ./layer folder.
-Archive contains fresh virus definiotion and thus it is too big to be included in the terraform lambda deployment script; it has to to be uploaded to S3 and referenced by the terraform.
+Archive does not contain virus definitions and thus it can be included in the terraform lambda deployment script.
