@@ -8,7 +8,6 @@
     "jest": "^27.0.6"
   },
   "scripts": {
-    "build": "./build.sh", 
-    "test": "jest handler.test.js"
+    "build": "./build.sh"
   }
 }
