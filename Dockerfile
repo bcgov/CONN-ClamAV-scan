@@ -11,7 +11,7 @@ RUN rm -rf lib
 
 RUN yum update -y
 RUN amazon-linux-extras install epel -y
-RUN yum install -y cpio yum-utils tar.x86_64 gzip zip
+RUN yum install -y cpio yum-utils tar.x86_64 gzip zip dos2unix
 
 RUN yumdownloader -x \*i686 --archlist=x86_64 clamav
 RUN rpm2cpio clamav-0*.rpm | cpio -vimd
@@ -58,12 +58,14 @@ RUN mkdir -p var/lib/clamav
 RUN chmod -R 777 var/lib/clamav
 
 COPY ./freshclam.conf .
+RUN dos2unix freshclam.conf
 
 RUN cp usr/bin/clamscan usr/bin/freshclam bin/.
 RUN cp usr/lib64/* lib/.
 RUN cp freshclam.conf bin/freshclam.conf
 
 RUN yum install shadow-utils.x86_64 -y
+
 
 RUN groupadd clamav
 RUN useradd -g clamav -s /bin/false -c "Clam Antivirus" clamav
